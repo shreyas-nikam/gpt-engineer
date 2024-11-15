@@ -1,0 +1,123 @@
+
+2024-11-15T17:09:03.558073
+================================ System Message ================================
+
+You will get information about a codebase that is currently on disk in the current folder.
+The user will ask you to write a script that runs the code in a specific way.
+You will answer with code blocks that include all the necessary terminal commands.
+Do not install globally. Do not use sudo.
+Do not explain the code, just give the commands.
+Do not use placeholders, use example values (like . for a folder argument) if necessary.
+
+
+================================ Human Message =================================
+
+
+        Make a unix script that
+        a) installs dependencies
+        b) runs all necessary parts of the codebase (in parallel if necessary)
+        
+Information about the codebase:
+
+```
+File: src/main.py
+1 import streamlit as st
+2 from data_handler import load_data, modify_data
+3 from graphs import plot_attribution_bar_chart, plot_contribution_bar_chart, plot_cumulative_line_chart
+4 
+5 def main():
+6     st.title("Interactive Portfolio Return Attribution Demo")
+7 
+8     # Load initial data
+9     data = load_data()
+10 
+11     # Sidebar for user inputs
+12     st.sidebar.header("Adjust Parameters")
+13     st.sidebar.subheader("Attribution Factors")
+14     st.sidebar.text("Modify the values to see changes in graphs")
+15 
+16     # Example sliders for user input
+17     st.sidebar.slider("ST Revisions", min_value=-10.0, max_value=10.0, value=0.0)
+18     st.sidebar.slider("Flow", min_value=-10.0, max_value=10.0, value=0.0)
+19     st.sidebar.slider("Sector", min_value=-10.0, max_value=10.0, value=0.0)
+20 
+21     # Modify data based on user input
+22     modified_data = modify_data(data)
+23 
+24     # Display graphs
+25     st.subheader("Attribution Bar Chart")
+26     plot_attribution_bar_chart(modified_data)
+27 
+28     st.subheader("Contribution Bar Chart")
+29     plot_contribution_bar_chart(modified_data)
+30 
+31     st.subheader("Cumulative Line Chart")
+32     plot_cumulative_line_chart(modified_data)
+33 
+34 if __name__ == "__main__":
+35     main()
+
+File: src/data_handler.py
+1 import pandas as pd
+2 
+3 def load_data():
+4     # Load initial data from a CSV or database
+5     # For simplicity, we'll create a dummy DataFrame
+6     data = pd.DataFrame({
+7         'Factor': ['ST Revisions', 'Flow', 'Sector'],
+8         'Portfolio': [1.0, 2.0, 3.0],
+9         'Linear': [0.5, 1.5, 2.5],
+10         'Interactions': [0.2, 0.3, 0.4],
+11         'Nonlinear': [0.1, 0.2, 0.3]
+12     })
+13     return data
+14 
+15 def modify_data(data):
+16     # Modify data based on user inputs
+17     # Placeholder for actual modification logic
+18     return data
+
+File: src/graphs.py
+1 import streamlit as st
+2 import matplotlib.pyplot as plt
+3 
+4 def plot_attribution_bar_chart(data):
+5     # Plot an attribution bar chart
+6     fig, ax = plt.subplots()
+7     data.plot(kind='bar', ax=ax)
+8     st.pyplot(fig)
+9 
+10 def plot_contribution_bar_chart(data):
+11     # Plot a contribution bar chart
+12     fig, ax = plt.subplots()
+13     data.plot(kind='bar', stacked=True, ax=ax)
+14     st.pyplot(fig)
+15 
+16 def plot_cumulative_line_chart(data):
+17     # Plot a cumulative line chart
+18     fig, ax = plt.subplots()
+19     data.cumsum().plot(ax=ax)
+20     st.pyplot(fig)
+
+File: src/utils.py
+1 # Placeholder for utility functions
+2 # Add any common functions used across modules here
+
+File: requirements.txt
+1 streamlit
+2 pandas
+3 matplotlib
+
+```
+
+================================== Ai Message ==================================
+
+```bash
+#!/bin/bash
+
+# Step a: Install dependencies
+pip install -r requirements.txt
+
+# Step b: Run the codebase
+streamlit run src/main.py
+```

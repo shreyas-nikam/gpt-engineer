@@ -1,0 +1,33 @@
+1. Application Overview
+
+Develop a Streamlit-based application that serves as an interactive machine learning portfolio return attribution demo/sandbox. Users will visualize attribution data through dynamic graphs and have the ability to modify input values to see how changes impact these graphs.
+
+2. Functional Requirements
+
+### Graphical Representations:
+
+Display three main types of graphs:
+- Attribution Bar Chart
+- Contribution Bar Chart
+- Cumulative Line Chart
+
+### Dynamic Interactivity:
+
+Implement input sliders or input fields for users to adjust the values of key variables affecting the graphs.
+Automatically update graphs based on changes in the input values.
+
+### Attribution Bar Chart:
+Display multiple factors such as "ST Revisions," "Flow," "Sector," etc., with categories like "Portfolio," "Linear," "Interactions," and "Nonlinear."
+Reflect positive and negative contributions as depicted in the provided example.
+
+### Contribution Bar Chart:
+Show percentage contributions of the categories "Portfolio," "Linear," "Interactions," and "Nonlinear."
+Ensure graph updates reflect user inputs.
+
+### Cumulative Line Chart:
+Plot time-series data showing the growth of "Portfolio," "Linear," "Interactions," and "Nonlinear" over time.
+Allow users to visualize changes across dates and investment periods.
+
+### Data Input and Modification:
+Enable easy input and modification of data for each category.
+Implement data validation to ensure robustness.
